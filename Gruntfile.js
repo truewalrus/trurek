@@ -29,8 +29,8 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'dev/app/css/base.css': [
-						'src/app/less/base/*.less',
-						'src/app/less/thirdparty/*.less'
+						'src/app/less/thirdparty/*.less',
+						'src/app/less/base/*.less'
 					]
 				}
 			},
@@ -40,8 +40,9 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'dist/app/css/base.css': [
-						'src/app/less/base/*.less',
-						'src/app/less/thirdparty/*.less'
+						'src/app/less/thirdparty/*.less',
+						'src/app/less/base/*.less'
+
 					]
 				}
 			}
@@ -110,14 +111,12 @@ module.exports = function(grunt) {
 		copy: {
 			develop: {
 				files: [
-					{expand: true, flatten: true, src: ['src/app/partials/*'], dest: 'dev/app/partials', filter: 'isFile'},
-					{expand: true, flatten: true, src: ['src/app/img/*'], dest: 'dev/app/img', filter: 'isFile'}
+					{expand: true, flatten: true, src: ['src/app/partials/*'], dest: 'dev/app/partials', filter: 'isFile'}
 				]
 			},
 			release: {
 				files: [
-					{expand: true, flatten: true, src: ['src/app/partials/*'], dest: 'dist/app/partials', filter: 'isFile'},
-					{expand: true, flatten: true, src: ['src/app/img/*'], dest: 'dist/app/img', filter: 'isFile'}
+					{expand: true, flatten: true, src: ['src/app/partials/*'], dest: 'dist/app/partials', filter: 'isFile'}
 				]
 			}
 		}
