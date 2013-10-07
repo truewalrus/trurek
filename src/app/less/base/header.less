@@ -1,7 +1,29 @@
 .header-box{
   height: 50px;
   width: 50px;
+  -webkit-transition: width 1s, height 1s;
+  -moz-transition: width 1s, height 1s;
+  -o-transition: width 1s, height 1s;
+  transition: width 1s, height 1s;
   border: 2px solid black;
+}
+
+.header-box:hover{
+  height:75px;
+  width: 75px;
+  -webkit-transition: width 1s, height 1s;
+  -moz-transition: width 1s, height 1s;
+  -o-transition: width 1s, height 1s;
+  transition: width 1s, height 1s;
+}
+
+.header-box-clicked{
+  width: 100%;
+  height:75px;
+  -webkit-transition: width 1s, height 1s;
+  -moz-transition: width 1s, height 1s;
+  -o-transition: width 1s, height 1s;
+  transition: width 1s, height 1s;
 }
 
 .first-box{
@@ -11,7 +33,7 @@
   position:absolute;
   top:0;
   left:0;
-  width:40%;
+  width:10%;
   height:100%;
 }
 

@@ -1,7 +1,7 @@
-<div class = "full-height header">
+<div class = "full-height header" ng-controller = "HeaderCtrl">
     <div class = "table-container">
         <div class = "header-surround">
-            <div class = "header-box first-box">Home</div>
+            <div ng-click = "makeActive()" ng-class = "{'header-box-clicked': active}" class = "header-box first-box">Home</div>
             <div class = "header-box">Blog</div>
             <div class = "header-box">Portfolio</div>
             <div class = "header-box">Contact Us</div>
