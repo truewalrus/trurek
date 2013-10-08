@@ -9,6 +9,12 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
 	// angular front end routes
     $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
 	$routeProvider.when('/sign-in', {templateUrl: 'partials/sign-in.html'});
+    $routeProvider.when('/cms', {templateUrl: 'partials/cms.html',
+        resolve: {
+            auth: function(user){
+                return user.isLoggedIn();
+            }
+        }});
     $routeProvider.otherwise({redirectTo: '/home'});
 	
 	// fix to remove '#' from url strings in browser
