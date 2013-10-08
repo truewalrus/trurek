@@ -9,10 +9,10 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
 	// angular front end routes
     $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
 	$routeProvider.when('/sign-in', {templateUrl: 'partials/sign-in.html'});
-    $routeProvider.when('/cms', {templateUrl: 'partials/cms.html',
+    $routeProvider.when('/cms', {templateUl: 'partials/cms.html',
         resolve: {
             auth: function(user){
-                return user.isLoggedIn();
+                return false;
             }
         }});
     $routeProvider.otherwise({redirectTo: '/home'});
