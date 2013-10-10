@@ -1,10 +1,10 @@
 <div class = "full-height" ng-controller = "HeaderCtrl">
     <div class = "table-container">
         <div class = "header-surround">
-            <div ng-click = "makeActive()" ng-class = "{'header-box-clicked': active}" class = "header-box first-box">Home</div>
-            <div class = "header-box">Blog</div>
-            <div class = "header-box">Portfolio</div>
-            <div class = "header-box">Contact Us</div>
+            <a ng-href = "/home"><div ui-route = "/home" ng-class = "{'header-box-clicked': $uiRoute, 'header-box' :!$uiRoute}">Home</div></a>
+            <a ng-href = "/blog"><div ui-route = "/blog" ng-class = "{'header-box-clicked': $uiRoute, 'header-box' :!$uiRoute}">Blog</div></a>
+            <a ng-href = "/portfolio"><div ui-route = "/portfolio" ng-class = "{'header-box-clicked': $uiRoute, 'header-box' :!$uiRoute}">Portfolio</div></a>
+            <a ng-href = "/contact-us"><div ui-route = "/contact-us" ng-class = "{'header-box-clicked': $uiRoute, 'header-box' :!$uiRoute}">Contact Us</div></a>
         </div>
     </div>
 </div>

@@ -4,7 +4,8 @@ angular.module("myApp.controllers").controller('HeaderCtrl', ['$scope','$locatio
     $scope.active = 0;
 
     $scope.makeActive = function(){
-        $scope.active = 1;
+        console.log("test");
+        //console.log($uiRoute);
     };
 
 }]);
