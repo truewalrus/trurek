@@ -109,7 +109,7 @@ function users_userLogout(request, response) {
 }
 
 function users_userInfo(request, response) {
-    response.send(request.user);
+    response.send(200);
 }
 
 function users_userDelete(request, response) {
@@ -146,7 +146,8 @@ function users_createUser(request, response){
 }
 
 function users_checkSession(request,response){
-    response.send(200);
+    response.send(request.user);
+    //response.send(200);
 }
 
 function clearDatabase(request, response) {

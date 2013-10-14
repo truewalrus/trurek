@@ -12,14 +12,49 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
     $routeProvider.when('/portfolio', {templateUrl: 'partials/portfolio.html'});
     $routeProvider.when('/contact-us', {templateUrl: 'partials/contact-us.html'});
     $routeProvider.when('/sign-in', {templateUrl: 'partials/sign-in.html'});
-    $routeProvider.when('/manage-blog', {templateUrl: 'partials/manage-blog.html'});
-    $routeProvider.when('/manage-portfolio', {templateUrl: 'partials/manage-portfolio.html'});
+
+    //Locked out pages
+    $routeProvider.when('/manage-blog', {templateUrl: 'partials/manage-blog.html',
+        resolve: {
+            auth: function(user, $location){
+                user.checkSession(
+                    function(data) {
+                    },
+                    function(data) {
+                        $location.path('/home');
+                    }
+                );
+            }
+        }
+    });
+    $routeProvider.when('/manage-portfolio', {templateUrl: 'partials/manage-portfolio.html',
+        resolve: {
+            auth: function(user, $location){
+                user.checkSession(
+                    function(data) {
+                    },
+                    function(data) {
+                        $location.path('/home');
+                    }
+                );
+            }
+        }
+    });
     $routeProvider.when('/cms', {templateUrl: 'partials/cms.html',
         resolve: {
-            auth: function(user){
-                return false;
+            auth: function(user, $location){
+                user.checkSession(
+                    function(data) {
+                    },
+                    function(data) {
+                        $location.path('/home');
+                    }
+                );
             }
-        }});
+        }
+    });
+
+
     $routeProvider.otherwise({redirectTo: '/home'});
 
 	// fix to remove '#' from url strings in browser
@@ -29,16 +64,22 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
 	$locationProvider.html5Mode(true);
   }]);
 
-app.run(['$rootScope', function($rootScope) {
-    $rootScope.$safeApply = function(fn) {
-        fn = fn || function() {};
-        if(this.$$phase) {
-            fn();
+app.run(['$rootScope', '$location', 'user', function($rootScope, $location, user) {
+  /*  $rootScope.$on( "$locationChangeStart", function(event, next, current) {
+        console.log($rootScope.loggedIn);
+        if ( !$rootScope.loggedIn) {
+            console.log("am I in?");
+            console.log(user);
+            // no logged user, we should be going to #login
+            if ( next.templateUrl == "partials/cms.html" ) {
+                $location.path('/home');
+                // already going to #login, no redirect needed
+            } else {
+                // not going to #login, we should redirect now
+              //  $location.path( "/login" );
+            }
         }
-        else {
-            this.$apply(fn);
-        }
-    };
+    });*/
 }]);
 
 //These need to be defined here in order for the module names to be succesfully reused

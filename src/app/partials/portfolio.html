@@ -1,3 +1,20 @@
-<div class = "portfolio">
-    portfolio
+<div class = "portfolio" ng-controller = "PortfolioCtrl">
+    <div class = "portfolio-title">
+        PORTFOLIO
+    </div>
+    <div class = "portfolio-projects">
+        <div class = "portfolio-project" ng-repeat = "temp in tempPort">
+            <img ng-src = "{{temp.img}}" class = "project-image">
+            <h2 class = "project-text"><span class = "project-text-mod">{{temp.title}}:<br />{{temp.description}}</span></h2>
+        </div>
+    </div>
+
+    <div class = "portfolio-projects">
+        <div class = "portfolio-project" ng-repeat = "temp in tempPort">
+            <img ng-src = "{{temp.img}}" class = "project-image">
+            <h2 class = "project-text"><span class = "project-text-mod">{{temp.title}}:<br />{{temp.description}}</span></h2>
+        </div>
+    </div>
+
+
 </div>
