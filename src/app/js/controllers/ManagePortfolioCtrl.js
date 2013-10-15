@@ -1,6 +1,5 @@
 'use strict';
-angular.module("myApp.controllers").controller('PortfolioCtrl', ['$scope', function($scope){
-
+angular.module("myApp.controllers").controller('ManagePortfolioCtrl', ['$scope', function($scope){
     $scope.tempPort = [
         {
             "title": "Super Proj One",
@@ -22,7 +21,5 @@ angular.module("myApp.controllers").controller('PortfolioCtrl', ['$scope', funct
             "description": "Website for some stuff we did which is for some reason still a boat",
             "img": "../img/BuyABoat.jpg"
         }];
-
-
 
 }]);

@@ -29,7 +29,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
     });
     $routeProvider.when('/manage-portfolio', {templateUrl: 'partials/manage-portfolio.html',
         resolve: {
-            auth: function(user, $location){
+            /*auth: function(user, $location){
                 user.checkSession(
                     function(data) {
                     },
@@ -37,7 +37,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
                         $location.path('/home');
                     }
                 );
-            }
+            }*/
         }
     });
     $routeProvider.when('/cms', {templateUrl: 'partials/cms.html',

@@ -1,6 +1,28 @@
-<div class = "manage-portfolio">
-    <legend>Manage Portfolio <button>Add New Work</button></legend>
-    <div class = "portfolio">
-        Portfolio
+<div class = "portfolio" ng-controller = "ManagePortfolioCtrl">
+    <div class = "portfolio-title"> Manage Portfolio </div>
+
+    <div class = "portfolio-projects">
+        <div class = "new-project">
+                <div class = "portfolio-input">
+                    Title: <input type = "text" ng-model = "newTitle">
+                </div>
+                <div class = "portfolio-input">
+                    Description: <input type = "text" ng-model = "newDescription">
+                </div>
+        </div><div class = "new-project">
+         <!--   <img ng-src = "../img/BuyABoat.jpg" class = "new-project-img">
+            <h2 class = "project-text"><span class = "project-text-mod">{{newTitle}}:<br />{{newDescription}}</span></h2>-->
+        </div>
+
+
     </div>
+
+
+    <div class = "portfolio-projects">
+     <!--   <div class = "portfolio-project" ng-repeat = "temp in tempPort">
+            <img ng-src = "{{temp.img}}" class = "project-image">
+            <h2 class = "project-text"><span class = "project-text-mod">{{temp.title}}:<br />{{temp.description}}</span></h2>
+        </div>-->
+    </div>
+
 </div>
