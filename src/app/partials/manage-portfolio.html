@@ -3,15 +3,30 @@
 
     <div class = "portfolio-projects">
         <div class = "new-project">
+            <form ng-submit = "newProject()">
                 <div class = "portfolio-input">
-                    Title: <input type = "text" ng-model = "newTitle">
+                    Site Name: <input type = "text" ng-model = "siteName" required>
                 </div>
                 <div class = "portfolio-input">
-                    Description: <input type = "text" ng-model = "newDescription">
+                    Site Address: <input type = "text" ng-model = "siteAddress" required>
                 </div>
+                <div class = "portfolio-input">
+                    One Liner: <input type = "text" ng-model = "description" required>
+                </div>
+                <div class = "portfolio-input">
+                    More Information: <input type = "text" ng-model = "information" required>
+                </div>
+                <div class = "portfolio-input">
+                    <button type = "submit">Save Project</button>
+                </div>
+            </form>
+
+            <div class = "portfolio-input">
+                <button ng-click = "check()">Check if worked</button>
+            </div>
         </div><div class = "new-project">
-         <!--   <img ng-src = "../img/BuyABoat.jpg" class = "new-project-img">
-            <h2 class = "project-text"><span class = "project-text-mod">{{newTitle}}:<br />{{newDescription}}</span></h2>-->
+            <img ng-src = "../img/BuyABoat.jpg" class = "new-project-img">
+            <h2 class = "project-text"><span class = "project-text-mod">{{siteName}}:<br />{{description}}</span></h2>
         </div>
 
 
@@ -19,10 +34,10 @@
 
 
     <div class = "portfolio-projects">
-     <!--   <div class = "portfolio-project" ng-repeat = "temp in tempPort">
+        <div class = "portfolio-project" ng-repeat = "temp in tempPort">
             <img ng-src = "{{temp.img}}" class = "project-image">
             <h2 class = "project-text"><span class = "project-text-mod">{{temp.title}}:<br />{{temp.description}}</span></h2>
-        </div>-->
+        </div>
     </div>
 
 </div>

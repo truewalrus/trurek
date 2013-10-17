@@ -1,4 +1,7 @@
-@import "portfolio.less";
+.border-box-mixin{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 
 .new-project{
   .border-box-mixin;
@@ -7,6 +10,7 @@
   display: inline-block;
   border: 1px solid black;
   position: relative;
+  vertical-align: top;
 }
 
 .portfolio-input{

@@ -1,5 +1,5 @@
 'use strict';
-angular.module("myApp.controllers").controller('ManagePortfolioCtrl', ['$scope', function($scope){
+angular.module("myApp.controllers").controller('ManagePortfolioCtrl', ['$scope', '$http', function($scope, $http){
     $scope.tempPort = [
         {
             "title": "Super Proj One",
@@ -21,5 +21,25 @@ angular.module("myApp.controllers").controller('ManagePortfolioCtrl', ['$scope',
             "description": "Website for some stuff we did which is for some reason still a boat",
             "img": "../img/BuyABoat.jpg"
         }];
+
+    $scope.newProject = function(){
+        $http.post('/api/portfolio/addProject', {'siteName': $scope.siteName, 'siteAddress': $scope.siteAddress, 'description': $scope.description, 'information': $scope.information}).
+            success(function(data) {
+                console.log(data);
+            }).
+            error(function(data) {
+                console.warn("Failure: " + data);
+            });
+    };
+
+    $scope.check = function(){
+        $http.get('/api/portfolio/getProjects').
+            success(function(data){
+                console.log(data);
+            }).
+            error(function(data){
+                console.warn("failed" + data);
+            });
+    };
 
 }]);
