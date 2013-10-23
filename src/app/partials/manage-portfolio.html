@@ -32,7 +32,8 @@
 
     <div class = "portfolio-projects">
         <div class = "portfolio-project" ng-repeat = "project in recentProjects">
-            <img ng-src = "../img/BuyABoat.jpg" class = "project-image">
+            <a ng-href = "/view-project/{{project.id}}">
+            <img ng-src = "../img/BuyABoat.jpg" class = "project-image"></a>
             <h2 class = "project-text"><span class = "project-text-mod">{{project.siteName}}:<br />{{project.description}}</span></h2>
         </div>
     </div>

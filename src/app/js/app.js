@@ -7,14 +7,15 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
  app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
     // angular front end routes
-    $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
-    $routeProvider.when('/blog', {templateUrl: 'partials/blog.html'});
-    $routeProvider.when('/portfolio', {templateUrl: 'partials/portfolio.html'});
-    $routeProvider.when('/contact-us', {templateUrl: 'partials/contact-us.html'});
-    $routeProvider.when('/sign-in', {templateUrl: 'partials/sign-in.html'});
+    $routeProvider.when('/home', {templateUrl: '/partials/home.html'});
+    $routeProvider.when('/blog', {templateUrl: '/partials/blog.html'});
+    $routeProvider.when('/portfolio', {templateUrl: '/partials/portfolio.html'});
+    $routeProvider.when('/contact-us', {templateUrl: '/partials/contact-us.html'});
+    $routeProvider.when('/sign-in', {templateUrl: '/partials/sign-in.html'});
+    $routeProvider.when('/view-project/:id', {templateUrl: '/partials/view-project.html'});
 
     //Locked out pages
-    $routeProvider.when('/manage-blog', {templateUrl: 'partials/manage-blog.html',
+    $routeProvider.when('/manage-blog', {templateUrl: '/partials/manage-blog.html',
         resolve: {
             auth: function(user, $location){
                 user.checkSession(
@@ -27,7 +28,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
             }
         }
     });
-    $routeProvider.when('/manage-portfolio', {templateUrl: 'partials/manage-portfolio.html',
+    $routeProvider.when('/manage-portfolio', {templateUrl: '/partials/manage-portfolio.html',
         resolve: {
             /*auth: function(user, $location){
                 user.checkSession(
@@ -40,7 +41,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
             }*/
         }
     });
-    $routeProvider.when('/cms', {templateUrl: 'partials/cms.html',
+    $routeProvider.when('/cms', {templateUrl: '/partials/cms.html',
         resolve: {
             auth: function(user, $location){
                 user.checkSession(

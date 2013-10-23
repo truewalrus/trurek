@@ -19,8 +19,9 @@ collections.push(function(err, db) {
 
 function portfolio_addProject(request, response){
     var d = new Date();
+    console.log(request.body.siteName.replace(/ /g, "").toUpperCase());
     db_connector.collection('portfolio', function(err, portfolio){
-        portfolio.insert({ "siteName": request.body.siteName, "id": request.body.siteName.toUpperCase(), "siteAddress": request.body.siteAddress, "description": request.body.description, "information": request.body.information, "date": d.getTime()}, function(error, data){
+        portfolio.insert({ "siteName": request.body.siteName, "id": request.body.siteName.replace(/ /g, "").toUpperCase(), "siteAddress": request.body.siteAddress, "description": request.body.description, "information": request.body.information, "date": d.getTime()}, function(error, data){
             if (error){
                 return response.send(401, "Not added");
             }
@@ -33,6 +34,7 @@ function portfolio_addProject(request, response){
 }
 
 function portfolio_getProjects(request, response){
+    console.log(request.query);
     var count = parseInt(request.query.count);
     var page = parseInt(request.query.page);
     var query = {};
@@ -51,7 +53,7 @@ function portfolio_getProjects(request, response){
     console.log("Sending %d articles from page %d", count, page);
 
     if (request.query.tag) { query.tags = new RegExp('.*' + request.query.tag + '.*', 'i'); }
-
+    if(request.query.id) {query.id = request.query.id.toUpperCase();};
 
     db_connector.collection('portfolio', function(err, portfolio){
         var info = {};
