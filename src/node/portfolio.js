@@ -33,11 +33,44 @@ function portfolio_addProject(request, response){
 }
 
 function portfolio_getProjects(request, response){
+    var count = parseInt(request.query.count);
+    var page = parseInt(request.query.page);
+    var query = {};
+
+    if (!count || count < 1) {
+        count = 1;
+    }
+    else if (count > 15) {
+        count = 15;
+    }
+    // Ensure that page exists and is a positive number.
+    if (!page || page < 1) {
+        page = 1;
+    }
+
+    console.log("Sending %d articles from page %d", count, page);
+
+    if (request.query.tag) { query.tags = new RegExp('.*' + request.query.tag + '.*', 'i'); }
+
+
     db_connector.collection('portfolio', function(err, portfolio){
-        portfolio.find().sort({'date':-1}).toArray(function(err, items){
-            if (err) response.send(401, "error");
-            response.send(items);
-        })
+        var info = {};
+        portfolio.find(query).limit(count).sort({'date': -1}).skip((page - 1) * count, function(err, cursor){
+            if (err) {
+                response.send("Server database error.", 500);
+            }
+            else {
+                cursor.count(function(err, total) {
+                    info.pages = Math.ceil(total / count);
+
+                    cursor.toArray(function(err, data) {
+                        info.projects = data;
+
+                        response.send(200, info);
+                    });
+                })
+            }
+        });
     })
 }
 
