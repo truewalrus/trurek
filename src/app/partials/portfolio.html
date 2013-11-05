@@ -3,19 +3,20 @@
         PORTFOLIO
     </div>
     <div class = "portfolio-projects">
-        <div class = "portfolio-project" ng-repeat = "temp in tempPort">
-            <img ng-src = "{{temp.img}}" class = "project-image">
-            <h2 class = "project-text"><span class = "project-text-mod">{{temp.title}}:<br />{{temp.description}}</span></h2>
+        <div class = "portfolio-project" ng-repeat = "project in page1">
+            <a ng-href = "/view-project/{{project.id}}">
+                <img ng-src = "../img/BuyABoat.jpg" class = "project-image"></a>
+            <h2 class = "project-text"><span class = "project-text-mod">{{project.siteName}}:<br />{{project.description}}</span></h2>
         </div>
     </div>
 
     <div class = "portfolio-projects">
-        <div class = "portfolio-project" ng-repeat = "temp in tempPort">
-            <img ng-src = "{{temp.img}}" class = "project-image">
-            <h2 class = "project-text"><span class = "project-text-mod">{{temp.title}}:<br />{{temp.description}}</span></h2>
+        <div class = "portfolio-project" ng-repeat = "project in page2">
+            <a ng-href = "/view-project/{{project.id}}">
+                <img ng-src = "../img/BuyABoat.jpg" class = "project-image"></a>
+            <h2 class = "project-text"><span class = "project-text-mod">{{project.siteName}}:<br />{{project.description}}</span></h2>
         </div>
     </div>
-
 
 
 </div>

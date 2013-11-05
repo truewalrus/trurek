@@ -21,5 +21,16 @@ angular.module("myApp.controllers").controller('ViewProjectCtrl', ['$scope', '$r
         $location.url('/home');
     }
 
+    $scope.deleteProject = function(){
+        $http.post('/api/portfolio/deleteProject', {'id': $scope.project.id}).
+            success(function(data){
+                console.log(data);
+                $location.url('/portfolio');
+            }).
+            error(function(err){
+                console.error(err);
+            });
+    };
+
 
 }]);

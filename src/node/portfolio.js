@@ -33,8 +33,21 @@ function portfolio_addProject(request, response){
     });
 }
 
+function portfolio_deleteProject(request, response){
+    db_connector.collection('portfolio', function(err, portfolio){
+        portfolio.remove({ "id": request.body.id}, function(error, data){
+            if (error){
+                return response.send(401, "Not deleted");
+            }
+            else{
+                console.log("Project deleted");
+                return response.send(200);
+            }
+        });
+    });
+}
+
 function portfolio_getProjects(request, response){
-    console.log(request.query);
     var count = parseInt(request.query.count);
     var page = parseInt(request.query.page);
     var query = {};
@@ -50,7 +63,6 @@ function portfolio_getProjects(request, response){
         page = 1;
     }
 
-    console.log("Sending %d articles from page %d", count, page);
 
     if (request.query.tag) { query.tags = new RegExp('.*' + request.query.tag + '.*', 'i'); }
     if(request.query.id) {query.id = request.query.id.toUpperCase();};
@@ -79,6 +91,7 @@ function portfolio_getProjects(request, response){
 
 routing.push(function(app) {
     app.post('/api/portfolio/addProject',  portfolio_addProject);
+    app.post('/api/portfolio/deleteProject', portfolio_deleteProject);
     app.get('/api/portfolio/getProjects', portfolio_getProjects);
 
 });

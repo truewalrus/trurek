@@ -1,4 +1,6 @@
 <div ng-controller = "ViewProjectCtrl">
+    <button ng-click = "deleteProject()">Delete</button>
+
     <div>
         Site Name: {{project.siteName}}, completed: {{project.date | date:"h:mm:ss a 'on' MMMM d, y"}}
     </div>
