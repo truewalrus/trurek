@@ -48,6 +48,7 @@ function portfolio_deleteProject(request, response){
 }
 
 function portfolio_getProjects(request, response){
+    console.log("here", request.query);
     var count = parseInt(request.query.count);
     var page = parseInt(request.query.page);
     var query = {};
@@ -90,8 +91,9 @@ function portfolio_getProjects(request, response){
 
 
 routing.push(function(app) {
-    app.post('/api/portfolio/addProject',  portfolio_addProject);
-    app.post('/api/portfolio/deleteProject', portfolio_deleteProject);
+    app.post('/api/portfolio/addProject',  portfolio_addProject); //add ensureAuthentication
+    app.post('/api/portfolio/deleteProject', portfolio_deleteProject); //add ensureAuthentication
+    app.post('/api/portfolio/updateProject', portfolio_updateProject); //TODO, add ensureAuthentication
     app.get('/api/portfolio/getProjects', portfolio_getProjects);
 
 });

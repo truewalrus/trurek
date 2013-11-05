@@ -9,7 +9,7 @@ var app = angular.module('myApp', ['myApp.filters', 'myApp.directives', 'myApp.s
     // angular front end routes
     $routeProvider.when('/home', {templateUrl: '/partials/home.html'});
     $routeProvider.when('/blog', {templateUrl: '/partials/blog.html'});
-    $routeProvider.when('/portfolio', {templateUrl: '/partials/portfolio.html'});
+    $routeProvider.when('/portfolio/:page', {templateUrl: '/partials/portfolio.html'});
     $routeProvider.when('/contact-us', {templateUrl: '/partials/contact-us.html'});
     $routeProvider.when('/sign-in', {templateUrl: '/partials/sign-in.html'});
     $routeProvider.when('/view-project/:id', {templateUrl: '/partials/view-project.html'});

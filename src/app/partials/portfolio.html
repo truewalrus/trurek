@@ -1,9 +1,13 @@
 <div class = "portfolio" ng-controller = "PortfolioCtrl">
     <div class = "portfolio-title">
         PORTFOLIO
+        <div class = "buttons">
+            <div ng-show = "previousPage"><a ng-href = "/portfolio/{{ (page-1) }}"><button>Previous Page</button></a></div>
+            <div ng-show = "nextPage"><a ng-href = "/portfolio/{{ (page+1) }}"><button>Next Page</button></a></div>
+        </div>
     </div>
     <div class = "portfolio-projects">
-        <div class = "portfolio-project" ng-repeat = "project in page1">
+        <div class = "portfolio-project" ng-repeat = "project in projects">
             <a ng-href = "/view-project/{{project.id}}">
                 <img ng-src = "../img/BuyABoat.jpg" class = "project-image"></a>
             <h2 class = "project-text"><span class = "project-text-mod">{{project.siteName}}:<br />{{project.description}}</span></h2>
@@ -11,11 +15,11 @@
     </div>
 
     <div class = "portfolio-projects">
-        <div class = "portfolio-project" ng-repeat = "project in page2">
+        <!--<div class = "portfolio-project" ng-repeat = "project in page2">
             <a ng-href = "/view-project/{{project.id}}">
                 <img ng-src = "../img/BuyABoat.jpg" class = "project-image"></a>
             <h2 class = "project-text"><span class = "project-text-mod">{{project.siteName}}:<br />{{project.description}}</span></h2>
-        </div>
+        </div>-->
     </div>
 
 
