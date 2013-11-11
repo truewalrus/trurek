@@ -5,6 +5,7 @@
             <div ng-show = "previousPage"><a ng-href = "/portfolio/{{ (page-1) }}"><button>Previous Page</button></a></div>
             <div ng-show = "nextPage"><a ng-href = "/portfolio/{{ (page+1) }}"><button>Next Page</button></a></div>
         </div>
+        Search: <input type = "text" ng-model = "searchQuery"> <button ng-click = "search(1)">S</button>
     </div>
     <div class = "portfolio-projects">
         <div class = "portfolio-project" ng-repeat = "project in projects">

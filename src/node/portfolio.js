@@ -35,13 +35,26 @@ function portfolio_addProject(request, response){
 
 function portfolio_deleteProject(request, response){
     db_connector.collection('portfolio', function(err, portfolio){
-        portfolio.remove({ "id": request.body.id}, function(error, data){
+        portfolio.remove({ "_id": request.body._id}, function(error, data){
             if (error){
                 return response.send(401, "Not deleted");
             }
             else{
                 console.log("Project deleted");
                 return response.send(200);
+            }
+        });
+    });
+}
+
+function portfolio_updateProject(request, response) {
+        db_connector.collection('portfolio', function (error, articles){
+        articles.update({ '_id': ObjectID(request.body._id) }, { $set: {'siteName': request.body.siteName, 'siteAddress': request.body.siteAddress, 'information': request.body.information} }, function(error, data){
+            if (error) {
+                response.send(500, { error: "Database error occurred while processing request." });
+            }
+            else {
+                response.send(200, { message: 'Project updated.' });
             }
         });
     });
@@ -65,7 +78,7 @@ function portfolio_getProjects(request, response){
     }
 
 
-    if (request.query.tag) { query.tags = new RegExp('.*' + request.query.tag + '.*', 'i'); }
+    if (request.query.tag) { query.tags = new RegExp('.*' + request.query.tag + '.*', 'i'); };
     if(request.query.id) {query.id = request.query.id.toUpperCase();};
 
     db_connector.collection('portfolio', function(err, portfolio){
@@ -93,7 +106,7 @@ function portfolio_getProjects(request, response){
 routing.push(function(app) {
     app.post('/api/portfolio/addProject',  portfolio_addProject); //add ensureAuthentication
     app.post('/api/portfolio/deleteProject', portfolio_deleteProject); //add ensureAuthentication
-    app.post('/api/portfolio/updateProject', portfolio_updateProject); //TODO, add ensureAuthentication
+    app.post('/api/portfolio/updateProject', portfolio_updateProject); //add ensureAuthentication
     app.get('/api/portfolio/getProjects', portfolio_getProjects);
 
 });

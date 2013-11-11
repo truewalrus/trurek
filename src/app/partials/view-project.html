@@ -1,13 +1,29 @@
 <div ng-controller = "ViewProjectCtrl">
     <button ng-click = "deleteProject()">Delete</button>
+    <button ng-click = "edit = true">Edit</button>
 
-    <div>
-        Site Name: {{project.siteName}}, completed: {{project.date | date:"h:mm:ss a 'on' MMMM d, y"}}
+    <div ng-show = "!edit">
+        <div>
+            Site Name: {{project.siteName}}, completed: {{project.date | date:"h:mm:ss a 'on' MMMM d, y"}}
+        </div>
+        <div>
+            Site Address: {{project.siteAddress}}
+        </div>
+        <div>
+            Information: {{project.information}}
+        </div>
     </div>
-    <div>
-        Site Address: {{project.siteAddress}}
-    </div>
-    <div>
-        Information: {{project.information}}
-    </div>
+
+    <form ng-show = "edit" ng-submit = "editProject()">
+        <div>
+            Site Name: <input type = "text"  ng-model = "project.siteName">
+        </div>
+        <div>
+            Site Address: <input type = "text" ng-model = "project.siteAddress">
+        </div>
+        <div>
+            Information: <input type = "text" ng-model = "project.information">
+        </div>
+        <button type = "submit" ng-click = "edit = false">Submit</button>
+    </form>
 </div>
